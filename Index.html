@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Banff and Jasper Itinerary — Reader Mode</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500&display=swap');
+
+  :root {
+    --bg: #F7F5F0;
+    --surface: #FFFFFF;
+    --text: #1C1C1C;
+    --muted: #6B6B6B;
+    --accent: #2E6B5E;
+    --accent-light: #EAF2F0;
+    --border: #E0DDD8;
+    --max-width: 720px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Lora', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.85;
+    padding: 40px 20px 80px;
+  }
+
+  .reader {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    background: var(--surface);
+    border-radius: 4px;
+    padding: 56px 64px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+  }
+
+  /* Header */
+  .meta {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  h1 {
+    font-family: 'Lora', serif;
+    font-size: 2rem;
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--text);
+    margin-bottom: 32px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* Headings */
+  h2 {
+    font-family: 'Lora', serif;
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-top: 52px;
+    margin-bottom: 16px;
+    padding-top: 20px;
+    border-top: 2px solid var(--accent);
+  }
+
+  h3 {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-top: 36px;
+    margin-bottom: 10px;
+  }
+
+  h4 {
+    font-family: 'Lora', serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    font-style: italic;
+    margin-top: 28px;
+    margin-bottom: 8px;
+  }
+
+  h5 {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--muted);
+    margin-top: 20px;
+    margin-bottom: 6px;
+  }
+
+  p { margin-bottom: 20px; }
+
+  ul, ol {
+    margin: 0 0 20px 24px;
+  }
+  li { margin-bottom: 6px; }
+
+  /* Callout / update box */
+  .update {
+    background: var(--accent-light);
+    border-left: 3px solid var(--accent);
+    padding: 14px 18px;
+    margin: 28px 0;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.92rem;
+    line-height: 1.6;
+    border-radius: 0 4px 4px 0;
+  }
+
+  /* Warning box */
+  .warning {
+    background: #FFF8EC;
+    border-left: 3px solid #D4840A;
+    padding: 14px 18px;
+    margin: 28px 0;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.92rem;
+    line-height: 1.6;
+    border-radius: 0 4px 4px 0;
+    color: #5C3A00;
+  }
+
+  /* TOC */
+  .toc {
+    background: var(--accent-light);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 24px 28px;
+    margin: 36px 0;
+  }
+  .toc-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+  .toc ol {
+    margin: 0 0 0 18px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: var(--text);
+  }
+  .toc ol ol {
+    margin-top: 4px;
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+
+  /* Source link */
+  .source-bar {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    color: var(--muted);
+    border-top: 1px solid var(--border);
+    padding-top: 20px;
+    margin-top: 60px;
+  }
+  .source-bar a { color: var(--accent); }
+
+  /* Reading controls */
+  .controls {
+    max-width: var(--max-width);
+    margin: 0 auto 20px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: var(--muted);
+  }
+  .controls button {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 6px 14px;
+    cursor: pointer;
+    font-size: 13px;
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    transition: background 0.15s;
+  }
+  .controls button:hover { background: var(--accent-light); }
+  .controls .label { margin-left: auto; color: var(--muted); }
+
+  @media (max-width: 640px) {
+    .reader { padding: 32px 24px; }
+    h1 { font-size: 1.5rem; }
+    body { font-size: 17px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="controls">
+  <button onclick="changeFontSize(1)">A+</button>
+  <button onclick="changeFontSize(-1)">A−</button>
+  <button onclick="toggleDark()">🌙 Dark</button>
+  <span class="label">myfeetwillleadme.com</span>
+</div>
+
+<article class="reader">
+
+  <div class="meta">Jessica Carpenter &nbsp;·&nbsp; March 2025 &nbsp;·&nbsp; ~44 min read</div>
+
+  <h1>Banff and Jasper Itinerary: The Ultimate Canadian Rockies Road Trip</h1>
+
+  <p>Is Banff actually the most beautiful place on earth, or what?! It doesn't get much better than jagged rock mountains looming over turquoise glacial lakes. Two of the most beautiful national parks in the world, Jasper and Banff are close together and make for a perfect extended Canadian Rockies road trip. There is a lot to see, so read on for my suggested road trip to Banff and Jasper Itinerary.</p>
+
+  <div class="toc">
+    <div class="toc-title">Contents</div>
+    <ol>
+      <li>How to Get To Banff and Jasper National Parks</li>
+      <li>Where to go on a Canadian Rockies Road Trip</li>
+      <li>How Much Time Do You Need?</li>
+      <li>Where to Stay in Jasper National Park
+        <ol>
+          <li>Camping in Jasper</li>
+          <li>Lodging in Jasper</li>
+        </ol>
+      </li>
+      <li>What to See in Jasper National Park
+        <ol>
+          <li>Maligne Canyon, Medicine Lake, Maligne Lake</li>
+          <li>Pyramid and Patricia Lakes</li>
+          <li>Annette and Edith Lakes</li>
+          <li>Organized Tours</li>
+          <li>Hiking Around Jasper</li>
+          <li>Athabasca Falls</li>
+          <li>Sunwapta Falls</li>
+        </ol>
+      </li>
+      <li>Drive the Icefields Parkway</li>
+      <li>What to See in Banff National Park
+        <ol>
+          <li>Peyto Lake</li>
+          <li>Bow Lake</li>
+          <li>Lake Louise</li>
+          <li>Moraine Lake</li>
+          <li>Johnston Canyon</li>
+        </ol>
+      </li>
+      <li>Where to Stay Near Banff</li>
+      <li>Visit the Town of Banff</li>
+      <li>Yoho National Park — Emerald Lake</li>
+      <li>What to Do Each Season</li>
+      <li>What to Pack</li>
+    </ol>
+  </div>
+
+  <!-- ── SECTION 1 ── -->
+  <h2>How to Get To Banff and Jasper National Parks</h2>
+
+  <p>The nearest international airport is in the metropolitan city of Calgary, Alberta. The drive from Calgary to Banff is approximately 1.5 hours. You can easily rent a car from the airport in Calgary. The author lives in Washington state just below the Canadian border, so they made a one week road trip loop, stopping in Kelowna wine country, Jasper, Banff, and then Revelstoke on the way home.</p>
+
+  <!-- ── SECTION 2 ── -->
+  <h2>Where to go on a Canadian Rockies Road Trip</h2>
+
+  <p>It's really tough to narrow it down; there is so much to see in British Columbia and Alberta. For the purposes of this post, the focus is on a Banff and Jasper itinerary for a one week road trip.</p>
+
+  <!-- ── SECTION 3 ── -->
+  <h2>How Much Time Do You Need For a Banff and Jasper National Parks Itinerary?</h2>
+
+  <p>One week for a Banff and Jasper itinerary is perfect. You could still see a lot in 5 days, or do more with two weeks. But 5 days should be the minimum — 2–3 days in each park, plus the 3.5 hour drive between them (more with stops) requires at least 5 days. Having 7 days allows you to spend one day and night in Kelowna wine tasting and seeing the lovely downtown. So this is unofficially a <strong>one week Banff and Jasper itinerary</strong>.</p>
+
+  <!-- ── SECTION 4 ── -->
+  <h2>Where to Stay in Jasper National Park</h2>
+
+  <div class="update">⚠️ <strong>Note:</strong> Jasper was ravaged by a wildfire in 2024. The town has reopened and businesses are operating. They are in the process of rebuilding over 374 structures that were destroyed. Please visit Parks Canada to check for any current fire situations before visiting in the summer.</div>
+
+  <p>When visiting Jasper, a good option is to divide time between camping and an Airbnb in Jasper town. After a night or two sleeping in the back of a car, it's nice to have a shower and space to spread out for a night or two.</p>
+
+  <h3>Camping in Jasper National Park</h3>
+
+  <p>For camping in Jasper and Banff National Parks, reserve your camp sites ahead of time as they book up during high season. Reserve at: reservation.pc.gc.ca</p>
+
+  <p>A lovely option is Lucerne Campground on Yellowhead Lake in British Columbia, just before crossing the time zone into Alberta. It is technically in Mount Robson Provincial Park, not Jasper.</p>
+
+  <p>When you reach the gate to any of the National Parks, you must buy a national park pass which is good for all the Canadian Rocky Mountain Parks (Jasper, Banff, Yoho, Kootenay, Revelstoke, Glacier, Waterton, etc.) The daily pass price is around $12 CAD per person, whereas an adult annual Discovery Pass is around $83 CAD per person — a better deal if you visit for more than a week out of the year.</p>
+
+  <div class="update">🎉 <strong>UPDATE FOR 2026:</strong> Parks Canada is offering free admission from June 19th–September 7th, 2026 along with 25% off camping/overnight stays thanks to the Canada Strong Pass!</div>
+
+  <h3>Lodging in Jasper National Park</h3>
+
+  <ul>
+    <li><strong>Pyramid Lake Resort</strong> — Perfect for a high end, lodge experience in a beautiful setting.</li>
+    <li><strong>Whistler's Inn</strong> — In town, with a rooftop hot tub and steam room.</li>
+    <li><strong>Jasper East Cabins</strong> — Rustic traditional cabin experience with all the comforts.</li>
+    <li><strong>Airbnb</strong> — Tons of adorable houses and apartments right in town. Convenient for restaurants and close to many sites.</li>
+  </ul>
+
+  <p>Jasper has a number of cute restaurants, cafes, and outdoor gear shops. For coffee, check out Andromeda Coffee and Ottos Cash &amp; Provisions.</p>
+
+  <!-- ── SECTION 5 ── -->
+  <h2>What to See in Jasper National Park</h2>
+
+  <h3>Maligne Canyon, Medicine Lake, Maligne Lake</h3>
+
+  <p>Maligne Lake is worth a visit along your itinerary, especially if the weather is clear. On a foggy day, it would be pointless to spend the $100 CAD to take the boat tour out to see Spirit Island. On a beautiful day, visiting Spirit Island would be a real treat.</p>
+
+  <p>The route to Maligne Lake also includes Medicine Lake and Maligne Canyon, so the 2+ hour roundtrip drive from the town of Jasper is worth it. A fire that burned through Maligne Valley in 2015 has dramatically changed the landscape of Medicine Lake but it is still beautiful.</p>
+
+  <p>Maligne Canyon is pretty and there are a series of bridges across it. You could theoretically spend 2–3 hours hiking here, although for your time, you'd be better off spending it doing another hike with more rewarding views, and just stopping at Maligne Canyon for a short while.</p>
+
+  <h3>Pyramid and Patricia Lakes</h3>
+
+  <p>Patricia Lake and Pyramid Lake are both in the same area — an easy 15 minute drive from the town of Jasper and fairly similar looking lakes. Grizzly bears have been spotted along the road in this area.</p>
+
+  <p>There are a handful of spots to park along Patricia Lake for a picnic and enjoy the views. A little farther up the road past Patricia Lake, you'll come to Pyramid Lake and Pyramid Lake Lodge, which is a great place to stay. You can also rent canoes here.</p>
+
+  <p>Pyramid Lake is known for Pyramid Island — you can walk across a bridge and explore the cute little island. Come quite early or later in the afternoon when it tends to be quieter. Late morning is fairly busy and there are not many parking spots. There is a trail to the bridge to the island and it's a short, easy walk.</p>
+
+  <h3>Annette and Edith Lakes</h3>
+
+  <p>These two lakes could easily be visited the same day as Patricia and Pyramid Lakes. They are small and quaint, but Annette Lake in particular is a pretty aquamarine color. Both have trails you can walk around them and would make for a fantastic summer day of kayaking or paddle boarding. The road past these lakes is also the road that continues to Maligne Canyon, Medicine Lake, and Maligne Lake. In the summer, you can rent paddle boards at Lake Edith from Translucid Adventures.</p>
+
+  <h3>Organized Tours</h3>
+
+  <p>There are a number of outdoor adventure tours you can take in Jasper: river rafting, glacial ice field or ice canyon tours, sky tram, canoeing, or leisurely floating down a river.</p>
+
+  <h3>Hike Around Jasper National Park</h3>
+
+  <p>One of the most popular trails is the <strong>Mount Edith Cavell Trail</strong>. The trailhead is less than an hour from the town of Jasper and the trail is around 5 miles long roundtrip. You'll come across mountain views, glaciers, and green glacial water.</p>
+
+  <p><strong>Sulfur Skyline Trail</strong> is another popular hike rewarding you with incredible views. The trail is roughly 5–6 miles total but does have some steep sections and takes most people between 4 and 6 hours to complete. Close by is Miette Hot Springs if you'd like to reward yourself with a soak after the hike.</p>
+
+  <p>Short stop-offs to waterfalls (Maligne Canyon, Athabasca Falls, Sunwapta Falls) are much quicker, easier walks where you can explore as little or as much as you want just a short distance from your car.</p>
+
+  <h3>Athabasca Falls</h3>
+
+  <p>Athabasca Falls and the entire river are quite beautiful. There are unique rock structures to explore in the immediate vicinity of the falls. On a clear day, the dramatic Mount Kerkeslin would be visible in the background.</p>
+
+  <h3>Sunwapta Falls</h3>
+
+  <p>Driving about 20 minutes farther on the Icefields Parkway is Sunwapta Falls. The falls are a short little walk from the parking lot to a viewing bridge — it takes around 5 minutes to walk to, and the parking area is right along the Icefields Parkway. This makes it a great stop along the drive from Jasper to Banff. You could spend more time following trails to different areas around the falls if desired.</p>
+
+  <!-- ── SECTION 6 ── -->
+  <h2>Drive the Icefields Parkway Between Banff and Jasper NP</h2>
+
+  <p>Considered one of the most stunning drives in the world, the Icefields Parkway (AB-93) connects Jasper National Park to Banff National Park. The approximately 140 mile stretch takes around 3 hours to cover, although with stops it can take longer.</p>
+
+  <p>The Icefields Parkway is a highlight of the Canadian Rockies road trip itinerary. The views are stunning, the water is milky aqua or vibrant turquoise, and the many glaciers are imposing. Take your time — you could easily use an entire day to make stops along the way.</p>
+
+  <!-- ── SECTION 7 ── -->
+  <h2>What to See in Banff National Park</h2>
+
+  <p>Canada's oldest national park, established in 1885, will be the highlight of your road trip itinerary. There is so much to see.</p>
+
+  <h3>Peyto Lake</h3>
+
+  <p>Peyto Lake is a stunning turquoise blue lake, famous for the view from the overlook along the Icefields Parkway. The lake is beautiful year round, but in the summer the turquoise is much more vibrant due to mineral content in the Peyto Glacier runoff that feeds it.</p>
+
+  <p>The parking lot at Bow Pass can get quite busy. The trail to the overlook is paved and uphill, but it's not too difficult and takes less than 15 minutes. The overlook on the wooden platform can get crowded — follow the dirt trail into the trees to the right and down the hill just before the platform, and the crowd thins out with much better photo opportunities.</p>
+
+  <p>You can extend your hike by going another 10 minutes past the viewing platforms to the rocky Upper Viewpoint for an even more dramatic view with fewer people. You can also hike down to the actual lake shore by climbing down the rocky area below the first viewpoint. Alternatively, drive a couple miles farther north on the Icefield Parkway to an unmarked pullout on the left for an easier approach (2 miles roundtrip).</p>
+
+  <h3>Bow Lake</h3>
+
+  <p>Just a 5 minute drive past Peyto Lake is beautiful Bow Lake. Park right off the Icefields Parkway in the parking lot just before The Lodge at Bow Lake. This beautiful lodge has recently been renovated after not having changed much since its completion in 1950. Before that, it was just a small cabin for mountaineer Jimmy Simpson and his family to run mountaineer tours.</p>
+
+  <p>You can take a 5.5 mile out and back hike to Bow Glacial Falls around the lakeshore with the option to extend the hike to beautiful Iceberg Lake, which involves some mild scrambling.</p>
+
+  <h3>Lake Louise</h3>
+
+  <p>Lake Louise cannot be missed. With a rich history dating back to the 1800s, Lake Louise was the destination for outdoor adventure enthusiasts traveling west via the railway. A one story log cabin was the original structure that eventually grew to the now famed luxury <strong>Fairmont Chateau Lake Louise</strong>. It possesses an iconic, old world luxury that very few destinations can match in beauty and setting.</p>
+
+  <h4>Getting to Lake Louise</h4>
+
+  <p>Driving to Lake Louise used to be more popular, but with the transition to shuttles, the cost to park has drastically gone up ($42 CAD). From May–October you can (and should) take the Parks Canada Shuttle from the park and ride at the ski resort for $12.75 CAD plus a $3.50 booking fee. Shuttles can also transport you between Lake Louise and Moraine Lake for no extra cost.</p>
+
+  <p>Shuttles must be booked in advance at reservation.pc.gc.ca under "Day Use." Booking for 40% of seats opens April 15th and these book up extremely fast. The remaining 60% of seats are sold 2 days ahead. If you're coming from the town of Banff without a rental car, you can use Roam Transit public transportation.</p>
+
+  <h4>Where to Stay Near Lake Louise</h4>
+  <ul>
+    <li><strong>Fairmont Chateau Lake Louise</strong> — Bucket list. If you have the means, do it.</li>
+    <li><strong>Paradise Lodge and Bungalows</strong> — Closest alternative accommodation to the lake.</li>
+    <li><strong>Post Hotel and Spa</strong> — Beautiful riverfront hotel with a price tag to match.</li>
+    <li><strong>Mountaineer Lodge</strong> — Nice hotel with great reviews and a slightly lower price.</li>
+    <li><strong>Lake Louise Campground</strong> — Cheapest option. Has toilets and showers.</li>
+  </ul>
+
+  <p>For food, the Trailhead Cafe is good for breakfast burritos to go in the mornings. If you want to treat yourself to a nice meal or coffee at Lake Louise, there are a few options at the Fairmont.</p>
+
+  <h4>Hiking at Lake Louise</h4>
+
+  <p>Some of the best hikes in Banff begin from Lake Louise. Two of the most iconic are the two tea houses.</p>
+
+  <h5>Lake Agnes Tea House</h5>
+  <p>Built in 1901 (and reconstructed in 1981) by the Canadian Pacific Railway, this tea house served as a refuge for hikers and mountaineers in the early 1900s. Begin by hiking around the Lake Louise shoreline on the right and you'll come across a sign to branch off. You will eventually pass by Mirror Lake before reaching Lake Agnes and the tea house — a steady uphill hike around 2.2 miles from Lake Louise with a gain of 1,312 feet.</p>
+
+  <p>You can extend your hike 0.6 miles past Lake Agnes for better views by going to Little Beehive. Alternately, continue along the right shoreline of Lake Agnes to go up to Big Beehive. Or go all the way up to Devil's Thumb at over 8,000 feet elevation.</p>
+
+  <h5>The Plain of Six Glaciers Tea House</h5>
+  <p>Built in 1927 by Swiss guides, the Plain of Six Glaciers Tea House remains the original structure and takes a bit longer to hike to but with more rewarding views. This 3.5 mile each way hike begins on the same trail on the right shoreline of Lake Louise but doesn't branch off — it continues to the end of Lake Louise and up. Most of the elevation gain occurs towards the end with some switchbacks.</p>
+
+  <p>An additional hour roundtrip from the tea house takes you to Abbott Pass where you can see high altitude glaciers and dramatic rock peaks. You can also combine Lake Agnes in a day hike via a connecting trail between the two tea houses — a 9+ mile loop.</p>
+
+  <p>The tea houses have no running water or electricity. Supplies are helicoptered in at the beginning of the season or hiked in by staff regularly. Vegetarian food is prepared fresh with propane stoves, and there are a variety of teas and drinks. They're open from June to October and accept only cash (CAD or USD — try to have CAD). Weather can change dramatically, so bring layers, wear good hiking shoes, and go early to avoid crowds. Bring bear spray just in case.</p>
+
+  <h3>Moraine Lake</h3>
+
+  <p>On any mental list of most beautiful places on the planet, Moraine Lake falls securely somewhere in the top 5. The color of the lake is better than Lake Louise — a deeper, brighter turquoise and more clear. The mountains offer a far more dramatic backdrop. Unlike Lake Louise, Moraine Lake is only accessible from May to October. The road is high risk for avalanches in the winter.</p>
+
+  <div class="update">📅 <strong>2026 Update:</strong> Moraine Lake road is scheduled to open June 1st, 2026.</div>
+
+  <p>Since 2023, you can no longer drive to Moraine Lake. The parking lot is closed to personal vehicles. Either bike there from Lake Louise, or schedule the shuttle ahead of time at reservation.pc.gc.ca under Day Use. If the shuttle is sold out, the Moraine Lake Bus (private bus from Moraine Lake Lodge) offers more options without waiting in lines.</p>
+
+  <p>There is only one place to stay near Moraine Lake: <strong>Moraine Lake Lodge</strong>. It is more rustic than the Fairmont, but rooms are limited and in extremely high demand — they book up a year in advance. Prices have changed exponentially since a decade ago. The lodge has a lovely restaurant that is worth coming for though. Make a reservation ahead. The food is delicious and the dining room is very cozy and not overly formal. There is also a little cafe open till 4:30 daily with snacks and beverages.</p>
+
+  <h4>Canoeing at Moraine Lake</h4>
+
+  <p>If canoeing on one of these turquoise lakes is on your bucket list, Moraine Lake is the best choice — fewer people on it at one time and a more dramatic backdrop. You can rent a canoe at the dock daily from 9–5 in June to September depending on the weather, and an hour will run you $160 Canadian. The canoes are first come first serve. The best times of day are right when they open or right before they close.</p>
+
+  <p>Note: Paddle boards are no longer allowed on Moraine Lake. They are still allowed at Lake Louise.</p>
+
+  <h4>Hiking at Moraine Lake</h4>
+
+  <p>The lake itself doesn't begin to thaw until June, so keep in mind there will be snow until mid summer.</p>
+
+  <h5>Rockpile Hike</h5>
+  <p>The most obvious "hike" around Moraine Lake. This trail is to the left side of the lake when you approach the shore and winds up a huge pile of rocks to give you numerous vantage points and photo ops from the top. You could spend a good hour or two wandering around, taking in the views and having lunch. The color of the water is best from up here.</p>
+
+  <h5>Lakeshore Hike</h5>
+  <p>Follow the right shoreline past the canoe dock. The flat, easy trail weaves in and out of trees near the shore, with plenty of little beaches to sit on a log and take in the view. You can follow the trail all the way to the back of the lake and back, a total of less than 2 miles roundtrip.</p>
+
+  <div class="warning">⚠️ <strong>Warning:</strong> Be extremely cautious about swimming in these alpine lakes — they are incredibly cold, cold enough that people drown from the shock. Stay close to shore, have a towel and warm clothing, and go slow.</div>
+
+  <p>Other popular hikes from Moraine Lake:</p>
+  <ul>
+    <li>Larch Valley / Sentinel Pass</li>
+    <li>Eiffel Lake Trail</li>
+    <li>Mount Temple</li>
+    <li>Consolation Lakes — nice but not as rewarding; only if you have extra time</li>
+  </ul>
+
+  <h3>Johnston Canyon</h3>
+
+  <p>About halfway between the towns of Lake Louise and Banff, or 30 minutes from either, this popular hike is easy and fun, but parking can be a real pain during high season. This dramatic canyon takes you through the gorge with a tributary to the beautiful Bow River where you'll see waterfalls and awesome rock formations.</p>
+
+  <p>The trail can be as short as 30 minutes to the first Lower Falls. There are two viewing platforms — there is often a long line for the bottom platform, but a few minutes farther up the hill the upper platform has almost no one, with quite a good view of the waterfall.</p>
+
+  <p>The Upper Falls is roughly an hour total on the trail. If you continue another 2 miles or so past the upper falls, you'll come to the Ink Pots — green mineral spring pools in a meadow. The trail is open year round, so in the winter you can experience frozen waterfalls.</p>
+
+  <h5>Where to Stay around Johnston Canyon</h5>
+  <ul>
+    <li><strong>Johnston Canyon Lodge and Bungalows</strong></li>
+    <li><strong>Johnston Canyon Campground</strong></li>
+  </ul>
+
+  <!-- ── SECTION 8 ── -->
+  <h2>Where to Stay Near Banff</h2>
+
+  <ul>
+    <li><strong>Lake Louise Campground</strong> — Cheapest option to be close to the hamlet of Lake Louise and the most popular lakes. Has toilets and showers.</li>
+    <li><strong>Johnston Canyon Campground</strong> — Also has toilets and showers.</li>
+    <li><strong>Johnston Canyon Lodge and Bungalows</strong> — A bit overpriced for what you get, but cheaper than many and well located.</li>
+    <li><strong>Storm Mountain Lodge</strong> — For that true log cabin vibe.</li>
+    <li><strong>Baker Creek Mountain Resort</strong> — A fairly large complex, with large rooms with decks, fireplaces and mini kitchenettes. They even have a recreational room and sauna.</li>
+    <li><strong>Moraine Lake Lodge</strong> — The author's absolute favorite place to stay in Banff, but the price has gone up drastically over the last decade due to high demand.</li>
+  </ul>
+
+  <h3>Visit the Town of Banff</h3>
+
+  <p>The town of Banff is much bigger than the little hamlet of Lake Louise, and bigger even than the town of Jasper. It has a population of around 8,000. The luxury hotel there, the <strong>Fairmont Banff Springs</strong>, established in 1888, is truly a marvel to behold.</p>
+
+  <p>The town of Banff is quite stunning with massive mountains all around it. The main street is beautiful, there are galleries and restaurants lining the streets, and deer roaming through town. It takes about 40 minutes to drive between Banff town proper and Lake Louise.</p>
+
+  <!-- ── SECTION 9 ── -->
+  <h2>Yoho National Park</h2>
+
+  <h3>Emerald Lake</h3>
+
+  <p>Yoho National Park is on the way back through British Columbia and is absolutely worth a stop. Emerald Lake is perhaps the most aptly named lake in the Canadian Rockies and is an incredibly beautiful spot. Unlike the other lakes, you are allowed to drive right to Emerald Lake, which makes it extra convenient.</p>
+
+  <p>Unlike the crowded parking lots at Lake Louise and Moraine Lake, Emerald Lake is in a more mellow setting. There is a lovely lodge right at the lake called <strong>Emerald Lake Lodge</strong> that is rustic and beautiful and far more reasonably priced than Moraine Lake Lodge or Fairmont. If you have the opportunity to stay here, it is highly recommended.</p>
+
+  <p>There is a short trail loop around the lake that takes around 1.5–2 hours to complete and follows the shoreline for much of it.</p>
+
+  <!-- ── SECTION 10 ── -->
+  <h2>What to do on a Canadian Rockies Road Trip Each Season</h2>
+
+  <h3>Summer in the Canadian Rockies</h3>
+
+  <p>Summer (June through August) is the most popular time to visit as everything is accessible. Wildflowers bloom in meadows, the lakes are at their most vibrant turquoise, and hiking trails are open. The downside is that it is the busiest time of year. Lake Louise and Moraine Lake are incredibly crowded. The parking lots fill up before sunrise and shuttle lines can be long. For this reason, you should either plan to arrive very early (by 6–7am) or embrace the shuttle system.</p>
+
+  <h3>Fall in the Canadian Rockies</h3>
+
+  <p>September and October are becoming increasingly popular times to visit. The fall foliage and the golden larch trees in particular (late September to mid-October) are stunning. The crowds thin out compared to peak summer, and you can see more wildlife. The nights and mornings are cold, with overnight temperatures frequently dipping below freezing in late September. Snow can happen any time after mid-September. Some services and shuttles have limited hours or close down in October, and Moraine Lake closes at some point in October.</p>
+
+  <h3>Winter and Spring in the Canadian Rockies</h3>
+
+  <p>Winter (November through March) is the quietest time and is stunning in its own way. The Fairmont Chateau Lake Louise is a world famous destination for ice skating on Lake Louise. There is excellent skiing at ski resorts in both Banff and Jasper. The Icefields Parkway is open in the winter with some seasonal closures due to snow, but it's a stunning drive in the winter. Some campgrounds and lodges are closed however. Spring (April and May) is also off peak, though the lakes won't have fully thawed and Moraine Lake Road won't be open yet.</p>
+
+  <!-- ── SECTION 11 ── -->
+  <h2>What to Pack</h2>
+
+  <ul>
+    <li><strong>Memory Foam Mattress for the Back of the Car</strong> — If you plan to car camp, a memory foam topper makes the back of an SUV surprisingly comfortable.</li>
+    <li><strong>Bear Spray</strong> — Essential in grizzly country. Rent or buy it in Jasper or Banff.</li>
+    <li><strong>Warm Layers</strong> — Even in summer, temperatures can drop significantly in the evenings and at higher elevations. A fleece and a waterproof outer layer are essential.</li>
+    <li><strong>Hiking Pants</strong> — Comfortable, quick-drying hiking pants make all day hikes more pleasant.</li>
+    <li><strong>Hiking Poles and Knee Bands</strong> — Especially important for the steep descents from the tea houses. Knee straps make a huge difference in comfort hiking downhill.</li>
+    <li><strong>Paddle Board</strong> — If you have the car space, bringing your own is far cheaper than renting. Note that paddle boards are no longer allowed on Moraine Lake.</li>
+    <li><strong>Day Pack and Water Bottle</strong> — A comfortable backpack and reusable water bottle are essential.</li>
+    <li><strong>Tent</strong> — If camping, obviously! Bring a rain fly.</li>
+    <li><strong>Binoculars</strong> — Wildlife spotting is one of the great pleasures of the Rockies. Elk, grizzly bears, black bears, moose, mountain goats, and bighorn sheep are all commonly seen.</li>
+    <li><strong>Headlamp</strong> — Essential for early morning starts and camping.</li>
+    <li><strong>Snacks</strong> — Food in the parks is expensive. Bring plenty of snacks for hikes and road trips.</li>
+  </ul>
+
+  <div class="source-bar">
+    원문 출처: <a href="https://www.myfeetwillleadme.com/banff-and-jasper-itinerary-the-ultimate-canadian-rockies-road-trip/" target="_blank">myfeetwillleadme.com</a> — 광고·이미지 제거 후 텍스트만 재구성한 리더 뷰입니다.
+  </div>
+
+</article>
+
+<script>
+  let fontSize = 18;
+  function changeFontSize(delta) {
+    fontSize = Math.max(14, Math.min(24, fontSize + delta));
+    document.body.style.fontSize = fontSize + 'px';
+  }
+
+  let dark = false;
+  function toggleDark() {
+    dark = !dark;
+    const root = document.documentElement;
+    if (dark) {
+      root.style.setProperty('--bg', '#1A1A1A');
+      root.style.setProperty('--surface', '#242424');
+      root.style.setProperty('--text', '#E8E6E1');
+      root.style.setProperty('--muted', '#888');
+      root.style.setProperty('--border', '#333');
+      root.style.setProperty('--accent-light', '#1E2E2B');
+    } else {
+      root.style.setProperty('--bg', '#F7F5F0');
+      root.style.setProperty('--surface', '#FFFFFF');
+      root.style.setProperty('--text', '#1C1C1C');
+      root.style.setProperty('--muted', '#6B6B6B');
+      root.style.setProperty('--border', '#E0DDD8');
+      root.style.setProperty('--accent-light', '#EAF2F0');
+    }
+    document.querySelector('[onclick="toggleDark()"]').textContent = dark ? '☀️ Light' : '🌙 Dark';
+  }
+</script>
+
+</body>
+</html>
