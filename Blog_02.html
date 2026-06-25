@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>27 Best Stops: Vancouver to Banff Road Trip — Reader Mode</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500&display=swap');
+
+  :root {
+    --bg: #F7F5F0;
+    --surface: #FFFFFF;
+    --text: #1C1C1C;
+    --muted: #6B6B6B;
+    --accent: #2E6B5E;
+    --accent-light: #EAF2F0;
+    --border: #E0DDD8;
+    --max-width: 720px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Lora', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.85;
+    padding: 40px 20px 80px;
+  }
+
+  .reader {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    background: var(--surface);
+    border-radius: 4px;
+    padding: 56px 64px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+  }
+
+  .meta {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  h1 {
+    font-family: 'Lora', serif;
+    font-size: 2rem;
+    font-weight: 600;
+    line-height: 1.3;
+    margin-bottom: 32px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  h2 {
+    font-family: 'Lora', serif;
+    font-size: 1.35rem;
+    font-weight: 600;
+    margin-top: 52px;
+    margin-bottom: 16px;
+    padding-top: 20px;
+    border-top: 2px solid var(--accent);
+  }
+
+  h3 {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-top: 36px;
+    margin-bottom: 10px;
+  }
+
+  h4 {
+    font-family: 'Lora', serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    font-style: italic;
+    margin-top: 28px;
+    margin-bottom: 8px;
+  }
+
+  p { margin-bottom: 20px; }
+
+  ul, ol { margin: 0 0 20px 24px; }
+  li { margin-bottom: 6px; }
+
+  .callout {
+    background: var(--accent-light);
+    border-left: 3px solid var(--accent);
+    padding: 14px 18px;
+    margin: 28px 0;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.92rem;
+    line-height: 1.6;
+    border-radius: 0 4px 4px 0;
+  }
+
+  .warning {
+    background: #FFF8EC;
+    border-left: 3px solid #D4840A;
+    padding: 14px 18px;
+    margin: 28px 0;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.92rem;
+    line-height: 1.6;
+    border-radius: 0 4px 4px 0;
+    color: #5C3A00;
+  }
+
+  .route-grid {
+    display: grid;
+    gap: 10px;
+    margin: 20px 0 28px;
+  }
+  .route-card {
+    background: var(--accent-light);
+    border-radius: 4px;
+    padding: 12px 16px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+  }
+  .route-card strong {
+    display: block;
+    color: var(--accent);
+    margin-bottom: 4px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .stop-number {
+    display: inline-block;
+    background: var(--accent);
+    color: white;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin-bottom: 6px;
+    letter-spacing: 0.03em;
+  }
+
+  .toc {
+    background: var(--accent-light);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 24px 28px;
+    margin: 36px 0;
+  }
+  .toc-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+  .toc ol {
+    margin: 0 0 0 18px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    line-height: 1.9;
+    color: var(--text);
+    columns: 2;
+    column-gap: 24px;
+  }
+
+  .source-bar {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    color: var(--muted);
+    border-top: 1px solid var(--border);
+    padding-top: 20px;
+    margin-top: 60px;
+  }
+  .source-bar a { color: var(--accent); }
+
+  .controls {
+    max-width: var(--max-width);
+    margin: 0 auto 20px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+  }
+  .controls button {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 6px 14px;
+    cursor: pointer;
+    font-size: 13px;
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    transition: background 0.15s;
+  }
+  .controls button:hover { background: var(--accent-light); }
+  .controls .label { margin-left: auto; color: var(--muted); }
+
+  @media (max-width: 640px) {
+    .reader { padding: 32px 24px; }
+    h1 { font-size: 1.5rem; }
+    body { font-size: 17px; }
+    .toc ol { columns: 1; }
+  }
+</style>
+</head>
+<body>
+
+<div class="controls">
+  <button onclick="changeFontSize(1)">A+</button>
+  <button onclick="changeFontSize(-1)">A−</button>
+  <button onclick="toggleDark()">🌙 Dark</button>
+  <span class="label">thebanffblog.com</span>
+</div>
+
+<article class="reader">
+
+  <div class="meta">Natasha · The Banff Blog · February 2026 · ~22 min read</div>
+
+  <h1>27 Best Stops On A Vancouver to Banff Road Trip</h1>
+
+  <p>Unlike many drives in the world, the drive from Vancouver to Banff (or Banff to Vancouver) is a <strong>beautiful one.</strong> There are plenty of stunning stops to make between the drive that can turn the journey into one of the best mountain road trips of your life!</p>
+
+  <div class="toc">
+    <div class="toc-title">27 Stops at a Glance</div>
+    <ol>
+      <li>Vancouver</li>
+      <li>Shannon Falls</li>
+      <li>Squamish</li>
+      <li>Garibaldi Lake</li>
+      <li>Whistler</li>
+      <li>Pemberton</li>
+      <li>Joffre Lakes</li>
+      <li>Duffy Lake</li>
+      <li>Kamloops</li>
+      <li>Sun Peaks</li>
+      <li>Hope Slide</li>
+      <li>Kelowna</li>
+      <li>Vernon</li>
+      <li>Revelstoke</li>
+      <li>Glacier National Park</li>
+      <li>Golden</li>
+      <li>Wapta Falls</li>
+      <li>Emerald Lake</li>
+      <li>Takakkaw Falls</li>
+      <li>Lake Louise</li>
+      <li>Moraine Lake</li>
+      <li>Bow Valley Parkway</li>
+      <li>Morant's Curve</li>
+      <li>Johnston Canyon</li>
+      <li>Vermilion Lakes</li>
+      <li>Downtown Banff</li>
+      <li>Calgary</li>
+    </ol>
+  </div>
+
+  <!-- FAQ -->
+  <h2>Vancouver to Banff Drive FAQ</h2>
+
+  <h4>How Far is the Vancouver to Banff Drive?</h4>
+  <p>How long it takes all depends on which route you take, but in general, expect the drive to be about 850 km (530 miles) and take anywhere from 9.5 (very fast/few stops) to 14 hours, or even longer if you really take your time.</p>
+
+  <h4>Can You Do the Vancouver to Banff Drive in One Day?</h4>
+  <p>Yes, you can drive from Vancouver to Banff in one very long day, though you won't be stopping at any of these locations unless it's just for lunch or coffee. The drive is a long one, and breaking it up into multiple days is recommended so you can really make the most out of it.</p>
+
+  <h4>Can You Drive from Vancouver to Banff in the Winter?</h4>
+  <p>When driving in Western Canada during winter, exercise extra caution, especially on treacherous routes like Highway 99 over Duffy Lake Road and Rogers Pass (Revelstoke to Golden). Even with winter tires, driving in a winter storm can be extremely challenging — if caught in one, it's best to pull over and seek accommodation for the night.</p>
+
+  <div class="warning">⚠️ From October 1 to April 30, winter tires or chains are mandatory on most British Columbia routes, as well as a few in Alberta. Stay updated on driving conditions via <strong>DriveBC</strong> (drivebc.ca) and <strong>511 Alberta</strong> (511.alberta.ca).</div>
+
+  <!-- Renting a Car -->
+  <h2>Renting a Car in Canada</h2>
+
+  <p>If you don't have your own car, it's best to rent one in Vancouver or Calgary — at Vancouver International Airport (YVR), Calgary International Airport (YYC), or downtown. You can rent one-way or book a return trip; one-way rentals often cost more. There are a few rental locations in downtown Banff, but they are usually more expensive than in the cities. Rates tend to get cheaper once you get away from the airport and into the city.</p>
+
+  <!-- Travel Options -->
+  <h2>The Best Ways to Travel Between Vancouver and Banff</h2>
+
+  <ul>
+    <li><strong>By Car/RV:</strong> The best way to travel. This allows you to take as much time as you need and stop when you feel like it. You can rent a car in Vancouver and drop it off in Calgary, often for a fee.</li>
+    <li><strong>By Bus:</strong> Rider Express will take visitors between Vancouver and Banff by bus. The trip takes 15 hours and costs $161 one way.</li>
+    <li><strong>By Train:</strong> There is no direct train, however the Rocky Mountaineer runs scenic rail journeys between Vancouver and Jasper and Vancouver and Lake Louise. Via Rail also has two trains weekly from Vancouver to Jasper.</li>
+    <li><strong>By Air:</strong> The easiest and quickest option. The closest airport to Banff is YYC (Calgary). WestJet and Air Canada both run frequent routes, with tickets often around $100–200 if booked in advance.</li>
+  </ul>
+
+  <!-- Routes -->
+  <h2>Vancouver to Banff Drive Routes</h2>
+
+  <div class="route-grid">
+    <div class="route-card">
+      <strong>Fastest Route</strong>
+      Trans-Canada Highway (Hwy 1) from Vancouver, Hwy 5 at Hope, through Merritt, back on Hwy 1 in Kamloops. Quickest and easiest roads, but also the most uneventful.
+    </div>
+    <div class="route-card">
+      <strong>Most Scenic Route ★ (This article's focus)</strong>
+      Head up to Whistler from Vancouver, take Highway 99 through Pemberton and Cache Creek over the Duffy Lake Road. Scenic but subject to avalanches in winter and landslides in summer — not easy to drive at night in winter.
+    </div>
+    <div class="route-card">
+      <strong>Alternative Scenic Route</strong>
+      Hwy 1 from Vancouver, Hwy 3 at Hope through the Okanagan (Vernon, Kelowna), eventually connecting with Revelstoke.
+    </div>
+    <div class="route-card">
+      <strong>Jasper Route</strong>
+      9 hours to Jasper from Vancouver via Hwy 5 through Tête Jaune Cache. Head to Jasper first, then take the Icefields Parkway south to Banff.
+    </div>
+    <div class="route-card">
+      <strong>Kootenay Route</strong>
+      From Golden, stay off the Trans-Canada and continue to Radium Hot Springs, then drive through Kootenay National Park to Banff on the Banff Windermere Highway (Hwy 93).
+    </div>
+    <div class="route-card">
+      <strong>Longest Route (Adventure Option)</strong>
+      Hwy 1 from Vancouver, Hwy 3 near Hope, driving along the border through Rossland, Nelson, Fernie, and Waterton National Park. Over 16 hours of driving straight through — less traveled but great if you want to pass Canada's best mountain towns.
+    </div>
+  </div>
+
+  <!-- Important Notes -->
+  <h2>Important Things to Note</h2>
+
+  <ul>
+    <li>If you plan to stop for sightseeing or hiking in Glacier, Kootenay, Yoho, Banff, or Jasper National Park, you will need a <strong>Parks Canada Pass</strong>.</li>
+    <li>Watch out for wildlife on the roads — bears, deer, elk, and moose are present, especially in summer. Respect their space.</li>
+    <li>Cell service is intermittent on much of this drive — notably spotty between Pemberton to Lillooet, Salmon Arm to Revelstoke, Revelstoke to Golden, and Golden to Lake Louise.</li>
+    <li>Stay up to date with road conditions on DriveBC and 511 Alberta.</li>
+  </ul>
+
+  <!-- THE 27 STOPS -->
+  <h2>The 27 Stops</h2>
+
+  <!-- 1 -->
+  <h3><span class="stop-number">Stop 1</span> Vancouver</h3>
+  <p>Although you can reverse the stops when driving from Banff to Vancouver, this journey begins in Vancouver — an ideal starting point with its international airport (YVR) offering numerous domestic and international flight options. If you arrive at YVR, take a day to explore: enjoy the Capilano Suspension Bridge, bike around Stanley Park, stroll Lynn Canyon Park, and eat sushi (Vancouver has the best sushi outside of Japan, in the authors' opinion).</p>
+
+  <!-- 2 -->
+  <h3><span class="stop-number">Stop 2</span> Shannon Falls</h3>
+  <p>Shannon Falls Provincial Park is just 58 km north of Vancouver and 2 km south of Squamish along the Sea to Sky Highway. It is home to the third largest waterfall in BC. The viewpoint is just a brief hike from the parking area. If you have time, an optional one-hour round-trip walk takes you to the base of the falls.</p>
+
+  <!-- 3 -->
+  <h3><span class="stop-number">Stop 3</span> Squamish</h3>
+  <p>Just after Shannon Falls along the breathtaking Sea to Sky Highway, you'll arrive in Squamish. Nestled at the northern edge of Howe Sound, surrounded by mountains and coastline, this is an excellent place to stop for hiking, biking, and climbing adventures. The famous Stawamus Chief granite monolith looms over the city. For food and drink, check out the Howe Sound Brewing Company.</p>
+
+  <!-- 4 -->
+  <h3><span class="stop-number">Stop 4</span> Garibaldi Lake</h3>
+  <p>Continuing on the Sea to Sky Highway, you'll come across Garibaldi Provincial Park, renowned for its breathtaking natural beauty and turquoise glacial waters. If you have a day to spare, the steep 9 km trail (one way) to Garibaldi Lake is challenging but worth it. Obtain a day-use pass from BC Parks to help manage foot traffic. Campsites are available near the lake for backcountry adventures. The water is frigidly cold, so swimming is not for everyone.</p>
+
+  <!-- 5 -->
+  <h3><span class="stop-number">Stop 5</span> Whistler ★ Must Stop</h3>
+  <p>Considered one of Canada's must-visit ski destinations, Whistler is less than two hours from Vancouver via the scenic Sea to Sky Highway. Renowned worldwide as one of the top ski destinations and boasting the largest ski area in North America, it's also a premier adventure spot in the summer — a favorite among road trippers who love mountain biking and hiking. This is considered a <strong>must-stop</strong> on any Vancouver to Banff road trip.</p>
+
+  <!-- 6 -->
+  <h3><span class="stop-number">Stop 6</span> Pemberton</h3>
+  <p>A mere 45 minutes beyond Whistler lies the quaint mountain town of Pemberton, positioned at the base of Mt. Currie with breathtaking views. Despite its size, it offers a range of shops, dining, and walking trails. Popular activities include visiting North Arm Farm or horseback riding through the valley with Copper Cayuse Outfitters. If accommodation prices are too high in Whistler, Pemberton is a great (and cheaper) alternative.</p>
+
+  <!-- 7 -->
+  <h3><span class="stop-number">Stop 7</span> Joffre Lakes</h3>
+  <p>Located just past Pemberton on Duffey Lake Road, Joffre Lakes Provincial Park is undoubtedly one of the most gorgeous lakes in British Columbia. The 10 km hike to Lower, Middle, and Upper Joffre Lakes has a minimal elevation gain of fewer than 400 meters. The reward is a dazzling blue lake shimmering under surrounding glaciers. Best time to visit: June to October.</p>
+
+  <!-- 8 -->
+  <h3><span class="stop-number">Stop 8</span> Duffy Lake</h3>
+  <p>As you venture beyond Joffre Lakes Provincial Park and proceed down Duffy Lake Road, you will arrive at Duffy Lake. An awe-inspiring viewpoint awaits with breathtaking views. Take advantage of the picturesque setting and enjoy a picnic before continuing to Lillooet.</p>
+
+  <!-- 9 -->
+  <h3><span class="stop-number">Stop 9</span> Kamloops</h3>
+  <p>Kamloops is one of the larger cities in BC — the meeting point of the North and South Thompson rivers. It's not a must-visit, but it's a great place to regroup, enjoy a good restaurant, or rest your head for the night (many hotels available). Towards the city's east is the BC Wildlife Park, where cougars and bears can be spotted. To the northeast lies Sun Peaks Resort with hiking trails, a bike park, and multiple ski runs.</p>
+
+  <!-- 10 -->
+  <h3><span class="stop-number">Stop 10</span> Sun Peaks (Winter Only)</h3>
+  <p>An alpine ski resort located 56 km northeast of Kamloops, Sun Peaks is a fully serviced ski resort great for families, with restaurants and plenty of things to do — unlike many ski resorts that are a bit in the middle of nowhere. They have multiple peaks with terrain for everyone. A standout feature here is the tree skiing.</p>
+
+  <!-- HWY 97 OPTIONS -->
+  <h2>Vancouver to Banff — Hwy 97 Option</h2>
+
+  <!-- 11 -->
+  <h3><span class="stop-number">Stop 11</span> Hope Slide</h3>
+  <p>Just outside of Hope, BC is the site of Canada's second-largest recorded landslide. In 1965, a landslide occurred near Hope — an estimated 47 million cubic meters of rock fell. The area is now known as Hope Slide and can be viewed easily by visitors.</p>
+
+  <!-- 12 -->
+  <h3><span class="stop-number">Stop 12</span> Kelowna</h3>
+  <p>A popular summer destination, Kelowna is in Canada's famed Okanagan wine region. People travel from around the country to sit in the sun and sip local wine on the shores of Lake Okanagan. You'll also find some of the best produce in Canada here, with farmers' markets full in the summer and fall. The Myra Canyon Trestles is recommended if you're up for a hiking adventure. In winter, Big White Ski Resort is worth a day or two.</p>
+
+  <!-- 13 -->
+  <h3><span class="stop-number">Stop 13</span> Vernon</h3>
+  <p>Less than an hour from Kelowna is the city of Vernon. In the summer, highlights include basking in the sun at Kalamalka Beach, strolling the historic main street, or buying fresh local fruit at Davidson Orchards.</p>
+
+  <!-- BACK ON HWY 1 -->
+  <h2>Back on Highway 1</h2>
+
+  <!-- 14 -->
+  <h3><span class="stop-number">Stop 14</span> Revelstoke ★ Must Stop</h3>
+  <p>One of the best stops when driving between Vancouver and Banff, this charming town is nestled near the Selkirk Mountains and Glacier National Park, and is among the top must-visit destinations in all of Canada. Revelstoke Mountain Resort has gained global recognition for its outstanding powder. Because it is situated off the Trans-Canada and near Rogers Pass, it is not as bustling as Whistler, but has plenty to offer in both summer and winter.</p>
+  <p>In summer, great activities include paddling on Arrow Lakes, mountain biking, or riding the Pipe Mountain Coaster. In winter, skiing and sledding are the primary draws, with the resort receiving quite a bit of snow without the crowds of Whistler. This is one of the authors' favorite towns in Canada.</p>
+
+  <!-- 15 -->
+  <h3><span class="stop-number">Stop 15</span> Glacier National Park</h3>
+  <p>Often overlooked by visitors to Banff, Yoho, and Kootenay, Glacier National Park (not to be confused with the US park) is a stunning national park. In summer it offers fantastic hiking; in winter it provides thrilling backcountry skiing for those experienced in avalanche territory. Top hikes include the Great Glacier Trail, Asulkan Valley Trail, and Abbott Ridge Trail.</p>
+
+  <!-- 16 -->
+  <h3><span class="stop-number">Stop 16</span> Golden</h3>
+  <p>Nestled between the Purcell and Rocky Mountains and built around the Columbia and Kicking Horse rivers, Golden offers numerous hiking opportunities in the summer. Favorite activities include the hike to Gorman Lake, the Golden Skybridge, visiting Boo the Grizzly, horseback riding in the Blaeberry, or white water rafting on the Kicking Horse River. Unlike Banff, you can enjoy things here that aren't possible inside a National Park — like snowmobiling or riding quads. Golden has a laid-back mountain town vibe without the overwhelming crowds of tourists.</p>
+
+  <!-- 17 -->
+  <h3><span class="stop-number">Stop 17</span> Wapta Falls (Yoho NP)</h3>
+  <p>Located in Yoho National Park, Wapta Falls is a spectacular natural wonder. Standing at 18 meters high, it spans a significant width of 107 meters. In winter, the water freezes and transforms into a magnificent ice-covered masterpiece. To reach it, drive 34 km down the Trans-Canada Hwy and enjoy a short 5 km roundtrip hike.</p>
+
+  <!-- 18 -->
+  <h3><span class="stop-number">Stop 18</span> Emerald Lake (Yoho NP)</h3>
+  <p>A must-visit when traveling between Vancouver and Banff, Emerald Lake is considered one of the most breathtaking lakes in the Canadian Rockies. The lake sparkles in a brilliant emerald shade resulting from glacial waters refracting light, and is encircled by towering peaks on all sides. Great activities include a leisurely stroll around its perimeter, paddling on its glassy surface, or savoring a coffee at the Cilantro restaurant while taking in panoramic views.</p>
+
+  <!-- 19 -->
+  <h3><span class="stop-number">Stop 19</span> Takakkaw Falls (Yoho NP)</h3>
+  <p>Located near Emerald Lake near the quaint town of Field, Takakkaw Falls is easily accessible — less than an hour from Golden and less than 30 minutes from Lake Louise. Towering at 373 meters, it's Canada's second-tallest waterfall, featuring two drops with the main drop at 254 meters. One unique feature is that it's easily accessible without any hiking — a rare find in the Rockies.</p>
+  <div class="callout">☕ Stop in Field and have lunch at Truffle Pigs on your drive! Note that Takakkaw Falls is only accessible in the summer.</div>
+
+  <!-- 20 -->
+  <h3><span class="stop-number">Stop 20</span> Lake Louise</h3>
+  <p>For more than a century, Lake Louise has been a magnet for tourists in the Canadian Rockies. This alpine lake boasts a striking turquoise hue derived from glacier melt and is framed by the imposing Mount Victoria and a hanging glacier. Finding a place more magnificent and breathtaking worldwide is challenging. Once you've taken in the stunning scenery, you can hike, climb, ski, or canoe in the vicinity.</p>
+
+  <!-- 21 -->
+  <h3><span class="stop-number">Stop 21</span> Moraine Lake</h3>
+  <p>If you're in the Canadian Rockies, Moraine Lake is likely on your wishlist. The alpine lake boasts a vibrant turquoise blue hue originating from glacier melt and is backed by the stunning Ten Peaks. This unspoiled natural wonder attracts millions of visitors annually and was once featured on the Canadian twenty-dollar bill.</p>
+  <p>Getting to Moraine Lake is now done by booking the Park and Ride Shuttle or a shuttle/tour with a private operator. Once there, there are plenty of hikes to enjoy, or you can take a paddle on the bright blue lake. Those with a heftier budget can stay at Moraine Lake Lodge, the only place to stay on Moraine Lake.</p>
+
+  <!-- 22 -->
+  <h3><span class="stop-number">Stop 22</span> Bow Valley Parkway</h3>
+  <p>Every visitor to Banff National Park should experience driving the Bow Valley Parkway (also known as the 1A) at least once. Before the Trans-Canada, this was the original road linking Banff and Lake Louise in the early 1900s. Today it is primarily a road for sightseeing and outdoor activities — a slower and more scenic alternative to the Trans-Canada. It's also one of the best spots for biking in Banff National Park, and during certain times every summer, the road shuts down to vehicles, allowing cyclists to take over.</p>
+
+  <!-- 23 -->
+  <h3><span class="stop-number">Stop 23</span> Morant's Curve</h3>
+  <p>Located just off the Bow Valley Parkway, this famed photography spot offers awe-inspiring views of the surrounding mountains. While Mount Fairview dominates the background, numerous other peaks — including Mount St. Piran, Niblock, Whyte, Saddle, Sheol, and Haddo Peak — are also visible. Photographers frequently visit to capture the perfect moment of a westbound train passing through during morning light, though there is no train schedule — it's all luck of the draw.</p>
+
+  <!-- 24 -->
+  <h3><span class="stop-number">Stop 24</span> Johnston Canyon</h3>
+  <p>Without a doubt the most prominent and recognizable stop along the Bow Valley Parkway. The trail is well-maintained, making it an easy hike for the entire family to enjoy in both winter and summer. During winter, the falls freeze into an enchanting sight. Early summer is the perfect time to witness the falls in full glory, with snow melting off nearby mountains causing them to roar. Being a popular destination, Johnston Canyon can get crowded, but facilities including a gift shop, restaurant, and cafe are available.</p>
+
+  <!-- 25 -->
+  <h3><span class="stop-number">Stop 25</span> Vermilion Lakes</h3>
+  <p>As you hop off the Bow Valley Parkway near Banff, you'll be close to Vermilion Lakes — one of the best photography spots in Banff. During golden hours, photographers flock here to capture the sublime landscape and sun hitting Mount Rundle just right.</p>
+
+  <!-- 26 -->
+  <h3><span class="stop-number">Stop 26</span> Downtown Banff</h3>
+  <p>You have made it to Downtown Banff — where most of the restaurants, accommodations, and attractions are located, and a fabulous place to base yourself for the remainder of your trip. There are plenty of things to do in Banff, including taking the Banff Gondola up Sulphur Mountain, hiking Tunnel Mountain, enjoying Bow Falls, visiting Two Jack Lake, having a BBQ at Cascade Ponds, or taking a Lake Minnewanka Scenic Cruise.</p>
+
+  <!-- 27 -->
+  <h3><span class="stop-number">Stop 27</span> Calgary</h3>
+  <p>Unless you are planning to drive back to Vancouver, flying out of Calgary International Airport (YYC) is your best option — there is no airport in Banff. From enjoying Calgary restaurants, the Calgary Stampede in summer, or taking in the views at the Calgary Tower, there are plenty of things to do in Calgary before flying out.</p>
+
+  <div class="source-bar">
+    원문 출처: <a href="https://thebanffblog.com/vancouver-to-banff/" target="_blank">thebanffblog.com</a> — 광고·이미지 제거 후 텍스트만 재구성한 리더 뷰입니다.
+  </div>
+
+</article>
+
+<script>
+  let fontSize = 18;
+  function changeFontSize(delta) {
+    fontSize = Math.max(14, Math.min(24, fontSize + delta));
+    document.body.style.fontSize = fontSize + 'px';
+  }
+
+  let dark = false;
+  function toggleDark() {
+    dark = !dark;
+    const root = document.documentElement;
+    if (dark) {
+      root.style.setProperty('--bg', '#1A1A1A');
+      root.style.setProperty('--surface', '#242424');
+      root.style.setProperty('--text', '#E8E6E1');
+      root.style.setProperty('--muted', '#888');
+      root.style.setProperty('--border', '#333');
+      root.style.setProperty('--accent-light', '#1E2E2B');
+    } else {
+      root.style.setProperty('--bg', '#F7F5F0');
+      root.style.setProperty('--surface', '#FFFFFF');
+      root.style.setProperty('--text', '#1C1C1C');
+      root.style.setProperty('--muted', '#6B6B6B');
+      root.style.setProperty('--border', '#E0DDD8');
+      root.style.setProperty('--accent-light', '#EAF2F0');
+    }
+    document.querySelector('[onclick="toggleDark()"]').textContent = dark ? '☀️ Light' : '🌙 Dark';
+  }
+</script>
+
+</body>
+</html>
